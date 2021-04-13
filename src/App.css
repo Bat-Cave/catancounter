@@ -1,38 +1,216 @@
-.App {
-  text-align: center;
+:root{
+  --main-color: #c1262a;
+  --second-color: #ed7921;
+  --third-color: #ffc80b;
+  --tree-color: #597859;
+  --ore-color: #98809b;
+  --wheat-color: #ffcc5e;
+  --brick-color: #a95648;
+  --sheep-color: #80bd44;
+  --background: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*::-webkit-scrollbar{
+  width: 6px;
+  background: transparent;
+}
+*::-webkit-scrollbar-track{
+  width: 6px;
+}
+*::-webkit-scrollbar-thumb{
+  width: 6px;
+  background: var(--wheat-color);
+  border-radius: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;;
 }
 
-.App-header {
-  background-color: #282c34;
+body{
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top;
+  overflow-x: hidden;
+}
+
+.container{
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+header{
+  width: 100%;
+  height: 50px;
+  background: var(--main-color);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
   color: white;
+  font-size: 1.4rem;
+  box-shadow: 0 0 4px 6px #74171a;
 }
 
-.App-link {
-  color: #61dafb;
+.info-div{
+  width: calc(100% - 64px);
+  max-width: 800px;
+  height: 40%;
+  max-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.5);
+  margin: 16px 0;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 12px 6px -5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.no-background{
+  height: 500px;
+  background: transparent;
+  backdrop-filter: blur(0);
+  box-shadow: none;
+}
+
+.info-div table{
+  width: 100%;
+  height: 100%;
+  margin-bottom: 50px;
+}
+
+.info-div table th{
+  padding: 4px 16px;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
+.info-div table td{
+  padding: 4px 16px;
+  font-size: 16px;
+}
+.info-div table tr:first-child{
+  margin-top: 50px;
+}
+
+.info-div table tr:nth-child(2n + 1){
+  background: rgba(89, 120, 89, 0.5);
+}
+
+.info-div table th:first-child{
+  text-align: left;
+  border-radius: 5px 0 0 0;
+}
+.info-div table th:last-child{
+  text-align: right;
+  border-radius: 0 5px 0 0;
+}
+.info-div table td:first-child{
+  text-align: left;
+}
+.info-div table td:last-child{
+  text-align: right;
+}
+
+footer{
+  width: 100%;
+  height: calc(50vh + 5px);
+  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.5);
+  top: calc(100vh - 5px);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all .25s ease;
+  color: black;
+}
+
+#opener{
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  transform: translate(-50%, 0%);
+  padding: 4px;
+  background-color: #e7e7e7;
+  object-fit: contain;
+  box-shadow:
+    inset 0 3px white, 
+    inset 0 -3px #bbb,
+    inset 3px 0 #d7d7d7, 
+    inset -3px 0 #d7d7d7,
+    0 12px 6px -5px black;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.dice-button{
+  backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.5);
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  transform: translate(-50%, 0%);
+  border-radius: 10px 10px 0 0;
+}
+
+.dice-selection{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 80%;
+  margin: 0px 10px;
+}
+
+.dice-selection button{
+  margin: 8px 24px;
+  padding: 4px;
+  background-color: #e7e7e7;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  box-shadow:
+    inset 0 3px white, 
+    inset 0 -3px #bbb,
+    inset 3px 0 #d7d7d7, 
+    inset -3px 0 #d7d7d7,
+    0 12px 6px -5px black;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+button:hover{
+  transform: translateY(-2px);
+}
+
+button:focus, button:active{
+  outline: none;
+}
+
+button{
+  transition: all.25s ease;
+  cursor: pointer;
 }
